@@ -33,12 +33,14 @@ export function Register() {
           name="usuario"
           placeholder="nombre de usuario"
           onChange={handleChange}
+          className="input-form register"
         />
         <input
           type="password"
           name="password"
           placeholder="contraseña"
           onChange={handleChange}
+          className="input-form register"
         />
         <Buttons>
           <button>registrarme</button>

@@ -16,7 +16,7 @@ form h1::before {
   background: var(--primary);
 }
 
-form input {
+form input.input-form {
   border: none;
   outline: none;
   background: none;
@@ -27,7 +27,7 @@ form input {
   transition: all ease-in 0.3s;
 }
 
-form input:focus {
+form input.input-form:focus {
   transform: scaleX(1);
   border-bottom: 1px solid var(--primary);
 }

@@ -1,0 +1,28 @@
+.buscar {
+  margin-top: 40px;
+}
+
+.buscar form {
+  position: relative;
+}
+
+.buscar form span {
+  position: absolute;
+  top: 30%;
+  left: 20px;
+}
+
+.buscar form span i {
+  font-size: 28px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+input.buscador {
+  width: 100%;
+  padding: 25px 60px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}

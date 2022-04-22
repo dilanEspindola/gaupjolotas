@@ -32,12 +32,14 @@ export function Login() {
             name="usuario"
             placeholder="nombre de usuario"
             onChange={handleChange}
+            className="input-form login"
           />
           <input
             type="password"
             name="password"
             placeholder="contraseña"
             onChange={handleChange}
+            className="input-form login"
           />
           <Buttons>
             <button>Iniciar Sesión</button>
