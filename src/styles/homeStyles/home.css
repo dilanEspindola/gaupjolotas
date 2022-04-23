@@ -9,12 +9,12 @@ span i {
 }
 
 .home > h1 {
-  margin-top: 50px;
+  margin-top: 20px;
   width: 80%;
 }
 
 .links {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   background: none;

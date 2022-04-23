@@ -1,29 +1,25 @@
 import { useEffect, useState } from "react";
-import { GetGuajolotas } from "../services/GetGuajolotas";
+import { GetData } from "../services/GetData";
+import { productosURL } from "../utils/urls";
+import Loading from "./Loading";
+import { useNavegador } from "../hooks/useNavegador";
 
 export const GuajolotasDocs = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const url = "http://localhost:4000/guajolotas";
+  const { handleNavigateDynamicRoute } = useNavegador();
+
+  const nameCollection = "guajolotas";
 
   useEffect(() => {
-    GetGuajolotas(url)
+    GetData(productosURL, nameCollection)
       .then((datos) => setData(datos))
       .catch((error) => setError(error.message));
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <img
-          src="https://res.cloudinary.com/dp9zv16le/image/upload/v1650605503/Rolling-1s-71px_m1bekn.svg"
-          alt=""
-        />
-      </div>
-    );
-  }
+  if (loading) return <Loading />;
 
   return (
     <div className="gualotas">
@@ -35,7 +31,11 @@ export const GuajolotasDocs = () => {
       {!data
         ? null
         : data.map((guajolota) => (
-            <div key={guajolota._id} className="single-guajolota">
+            <div
+              key={guajolota._id}
+              className="single-guajolota"
+              onClick={() => handleNavigateDynamicRoute(guajolota._id)}
+            >
               <img src={guajolota.imagen} alt={guajolota.nombre} />
               <div className="txt-precio-guajolota">
                 <h2 className="nombre">{guajolota.nombre}</h2>

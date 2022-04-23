@@ -1,10 +1,13 @@
 import { Home } from "../components/Home";
+import { BebidasDoc } from "../components/BebidasDoc";
+import "../styles/loading.css";
+import "../styles/guajolota/guajolotas.css";
 
 export const Bebidas = () => {
   return (
     <>
       <Home />
-      <h1>bebidas</h1>
+      <BebidasDoc />
     </>
   );
 };
