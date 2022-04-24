@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, ContainerForm, Buttons } from "../styles/form";
 import { User } from "../context/UserContext";
 
@@ -11,7 +11,6 @@ export function Register() {
     usuario: "",
     password: "",
   });
-  const navigate = useNavigate();
   const { register } = User();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -21,7 +20,6 @@ export function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     register(data.usuario, data.password);
-    navigate("/login");
   };
 
   return (

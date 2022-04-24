@@ -14,7 +14,5 @@ export const DataProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  return (
-    <context.Provider value={{ datos, setDatos }}>{children}</context.Provider>
-  );
+  return <context.Provider value={{ datos }}>{children}</context.Provider>;
 };

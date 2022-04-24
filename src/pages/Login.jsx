@@ -17,7 +17,7 @@ export function Login() {
     setUserLogin({ ...userLogin, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     login(userLogin.usuario, userLogin.password);
   };

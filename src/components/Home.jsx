@@ -14,7 +14,7 @@ export const Home = () => {
             alt="logo"
           />
           <span>
-            <i className="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping icon-cart"></i>
           </span>
         </IconsHome>
         <h1>Nada como una Guajolota para empezar el día</h1>

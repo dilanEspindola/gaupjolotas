@@ -12,7 +12,7 @@ export const GetAllData = async () => {
       data.bebidas.map((bebida) => nuevosDatos.push(bebida));
     }
     if (data.tamales) {
-      data.bebidas.map((tamal) => nuevosDatos.push(tamal));
+      data.tamales.map((tamal) => nuevosDatos.push(tamal));
     }
   });
 

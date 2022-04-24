@@ -6,7 +6,12 @@ import { Bebidas } from "./pages/Bebidas";
 import { Tamales } from "./pages/Tamales";
 import { Guajolotas } from "./pages/Guajolotas";
 import { ProductoId } from "./pages/ProductoId";
+import { Buscador } from "./pages/Buscador";
 import { DataProvider } from "./context/DataContext";
+import { RutasProtegidas } from "./components/RutasProtegidas";
+import { LoginRegisterProtegidos } from "./components/LoginRegisterProtegidos";
+
+import "./App.css";
 
 function App() {
   return (
@@ -14,12 +19,62 @@ function App() {
       <UserProvider>
         <DataProvider>
           <Routes>
-            <Route path="/" element={<Guajolotas />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/bebidas" element={<Bebidas />} />
-            <Route path="/tamales" element={<Tamales />} />
-            <Route path="/:productoId" element={<ProductoId />} />
+            <Route
+              path="/"
+              element={
+                <RutasProtegidas>
+                  <Guajolotas />
+                </RutasProtegidas>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <LoginRegisterProtegidos>
+                  <Register />
+                </LoginRegisterProtegidos>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <LoginRegisterProtegidos>
+                  <Login />
+                </LoginRegisterProtegidos>
+              }
+            />
+            <Route
+              path="/bebidas"
+              element={
+                <RutasProtegidas>
+                  <Bebidas />
+                </RutasProtegidas>
+              }
+            />
+            <Route
+              path="/tamales"
+              element={
+                <RutasProtegidas>
+                  <Tamales />
+                </RutasProtegidas>
+              }
+            />
+            <Route
+              path="/buscador"
+              element={
+                <RutasProtegidas>
+                  <Buscador />
+                </RutasProtegidas>
+              }
+            />
+            <Route
+              path="/:productoId"
+              element={
+                <RutasProtegidas>
+                  <ProductoId />
+                </RutasProtegidas>
+              }
+            />
           </Routes>
         </DataProvider>
       </UserProvider>

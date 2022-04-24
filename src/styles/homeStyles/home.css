@@ -3,7 +3,7 @@ img {
   height: 100px;
 }
 
-span i {
+span i.icon-cart {
   font-size: 50px;
   color: rgba(0, 0, 0, 0.4);
 }
