@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
   const register = async (usuario, password) => {
     try {
       const res = await axios({
-        url: "http://localhost:4000/users/register",
+        url: "https://backend-appguajolotas.herokuapp.com/users/register",
         data: {
           usuario: usuario,
           password: password,
@@ -21,12 +21,21 @@ export const UserProvider = ({ children }) => {
         withCredentials: false,
         method: "POST",
       });
-      if (res.data.userCreated === false) {
+      console.log(res);
+      if (!res.data.userCreated) {
         Swal.fire({
           icon: "error",
-          title: "Ooops...",
+          title: "Ooops... 😢",
           text: "El usuario ya existe",
-        }).then((success) => navigate("/register"));
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "usuario creado 😀",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then((success) => navigate("/login"));
       }
       navigate("/login");
     } catch (error) {
@@ -36,14 +45,17 @@ export const UserProvider = ({ children }) => {
 
   const login = async (usuario, password) => {
     try {
-      const res = await axios.post("http://localhost:4000/users/login", {
-        usuario,
-        password,
-      });
+      const res = await axios.post(
+        "https://backend-appguajolotas.herokuapp.com/users/login",
+        {
+          usuario,
+          password,
+        }
+      );
       if (!res.data.auth) {
         Swal.fire({
           icon: "error",
-          title: "Ooops...",
+          title: "Ooops... 😩",
           text: "usuario y/o contraseña no valido(s)",
         }).then((success) => navigate("/login"));
       }
@@ -53,8 +65,7 @@ export const UserProvider = ({ children }) => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "😄",
-          text: "usuario validado",
+          title: "Bienvenido 😄",
           showConfirmButton: false,
           timer: 1500,
         })

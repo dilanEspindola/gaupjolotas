@@ -1,1 +1,1 @@
-export const productosURL = "http://localhost:4000/";
+export const productosURL = "https://backend-appguajolotas.herokuapp.com/";
