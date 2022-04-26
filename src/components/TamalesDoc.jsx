@@ -26,21 +26,23 @@ export const TamalesDoc = () => {
           <h2>{error}</h2>
         </div>
       )}
-      {!tamales
-        ? null
-        : tamales.map((tamal) => (
-            <div
-              key={tamal._id}
-              className="single-guajolota"
-              onClick={() => handleNavigateDynamicRoute(tamal._id)}
-            >
-              <img src={tamal.imagen} alt={tamal.nombre} />
-              <div className="txt-precio-guajolota">
-                <h2 className="nombre">{tamal.nombre}</h2>
-                <p className="precio">{tamal.precio}</p>
-              </div>
+      {!tamales ? (
+        <Loading />
+      ) : (
+        tamales.map((tamal) => (
+          <div
+            key={tamal._id}
+            className="single-guajolota"
+            onClick={() => handleNavigateDynamicRoute(tamal._id)}
+          >
+            <img src={tamal.imagen} alt={tamal.nombre} />
+            <div className="txt-precio-guajolota">
+              <h2 className="nombre">{tamal.nombre}</h2>
+              <p className="precio">{tamal.precio}</p>
             </div>
-          ))}
+          </div>
+        ))
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import axios from "axios";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { createContext, useContext } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const context = createContext();
 
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
           icon: "error",
           title: "Ooops... 😢",
           text: "El usuario ya existe",
-        });
+        }).then(() => navigate("/register"));
       } else {
         Swal.fire({
           position: "center",

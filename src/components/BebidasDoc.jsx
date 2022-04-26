@@ -27,21 +27,23 @@ export const BebidasDoc = () => {
           <h2>{error}</h2>
         </div>
       )}
-      {!bebidas
-        ? null
-        : bebidas.map((bebida) => (
-            <div
-              key={bebida._id}
-              className="single-guajolota"
-              onClick={() => handleNavigateDynamicRoute(bebida._id)}
-            >
-              <img src={bebida.imagen} alt={bebida.nombre} />
-              <div className="txt-precio-guajolota">
-                <h2 className="nombre">{bebida.nombre}</h2>
-                <p className="precio">{bebida.precio}</p>
-              </div>
+      {!bebidas ? (
+        <Loading />
+      ) : (
+        bebidas.map((bebida) => (
+          <div
+            key={bebida._id}
+            className="single-guajolota"
+            onClick={() => handleNavigateDynamicRoute(bebida._id)}
+          >
+            <img src={bebida.imagen} alt={bebida.nombre} />
+            <div className="txt-precio-guajolota">
+              <h2 className="nombre">{bebida.nombre}</h2>
+              <p className="precio">{bebida.precio}</p>
             </div>
-          ))}
+          </div>
+        ))
+      )}
     </div>
   );
 };

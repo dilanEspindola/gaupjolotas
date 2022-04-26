@@ -1,4 +1,5 @@
 import axios from "axios";
+import { memo } from "react";
 import { productosURL } from "../utils/urls";
 
 export const GetAllData = async () => {

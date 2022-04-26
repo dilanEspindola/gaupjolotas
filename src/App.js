@@ -8,8 +8,10 @@ import { Guajolotas } from "./pages/Guajolotas";
 import { ProductoId } from "./pages/ProductoId";
 import { Buscador } from "./pages/Buscador";
 import { DataProvider } from "./context/DataContext";
+import { CarritoProvider } from "./context/CarritoContext";
 import { RutasProtegidas } from "./components/RutasProtegidas";
 import { LoginRegisterProtegidos } from "./components/LoginRegisterProtegidos";
+import { CarritoPage } from "./pages/CarritoPage";
 
 import "./App.css";
 
@@ -18,64 +20,74 @@ function App() {
     <div className="App">
       <UserProvider>
         <DataProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <RutasProtegidas>
-                  <Guajolotas />
-                </RutasProtegidas>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <LoginRegisterProtegidos>
-                  <Register />
-                </LoginRegisterProtegidos>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <LoginRegisterProtegidos>
-                  <Login />
-                </LoginRegisterProtegidos>
-              }
-            />
-            <Route
-              path="/bebidas"
-              element={
-                <RutasProtegidas>
-                  <Bebidas />
-                </RutasProtegidas>
-              }
-            />
-            <Route
-              path="/tamales"
-              element={
-                <RutasProtegidas>
-                  <Tamales />
-                </RutasProtegidas>
-              }
-            />
-            <Route
-              path="/buscador"
-              element={
-                <RutasProtegidas>
-                  <Buscador />
-                </RutasProtegidas>
-              }
-            />
-            <Route
-              path="/:productoId"
-              element={
-                <RutasProtegidas>
-                  <ProductoId />
-                </RutasProtegidas>
-              }
-            />
-          </Routes>
+          <CarritoProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <RutasProtegidas>
+                    <Guajolotas />
+                  </RutasProtegidas>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <LoginRegisterProtegidos>
+                    <Register />
+                  </LoginRegisterProtegidos>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <LoginRegisterProtegidos>
+                    <Login />
+                  </LoginRegisterProtegidos>
+                }
+              />
+              <Route
+                path="/bebidas"
+                element={
+                  <RutasProtegidas>
+                    <Bebidas />
+                  </RutasProtegidas>
+                }
+              />
+              <Route
+                path="/tamales"
+                element={
+                  <RutasProtegidas>
+                    <Tamales />
+                  </RutasProtegidas>
+                }
+              />
+              <Route
+                path="/buscador"
+                element={
+                  <RutasProtegidas>
+                    <Buscador />
+                  </RutasProtegidas>
+                }
+              />
+              <Route
+                path="/:productoId"
+                element={
+                  <RutasProtegidas>
+                    <ProductoId />
+                  </RutasProtegidas>
+                }
+              />
+              <Route
+                path="/carrito"
+                element={
+                  <RutasProtegidas>
+                    <CarritoPage />
+                  </RutasProtegidas>
+                }
+              />
+            </Routes>
+          </CarritoProvider>
         </DataProvider>
       </UserProvider>
     </div>

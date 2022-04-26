@@ -25,3 +25,58 @@ input.buscador {
   background: rgba(0, 0, 0, 0.1);
   font-size: 18px;
 }
+
+.vista-buscador {
+  padding: 20px;
+}
+
+.vista-buscador form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vista-buscador form .cancelar {
+  text-transform: capitalize;
+  font-size: 18px;
+  text-decoration: none;
+  color: #000;
+}
+
+.vista-buscador form input {
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: none;
+  background: rgba(206, 206, 206, 0.959);
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+
+.resultado-buscador {
+  margin-top: 20px;
+}
+
+.no-resultados {
+  margin-top: 200px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.logo-txt-busqueda {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-txt-busqueda i {
+  margin-bottom: 10px;
+  font-size: 125px;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.logo-txt-busqueda p {
+  font-size: 24px;
+}

@@ -11,9 +11,8 @@ span i.back {
 }
 
 .desc-producto {
-  width: 80%;
-  padding: 0 40px;
-  margin: 0px auto;
+  padding: 0 0px;
+  margin: 0px auto 80px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +41,7 @@ span i.back {
 .añadir {
   margin-top: 30px;
   border-radius: 20px;
-  width: 100%;
+  width: 50%;
   background: #fff;
   padding: 20px;
   display: flex;
@@ -65,4 +64,85 @@ span i.back {
 .añadir i {
   background: #fff;
   font-size: 20px;
+}
+
+.sabor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 100px;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.combo {
+}
+
+.combo .bebidas-titulo-combo {
+  text-align: left;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.combo .txt-combo {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.combo .img-bebida {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 320px) and (max-width: 420px) {
+  .combo .img-bebida {
+    grid-template-columns: 1fr;
+  }
+}
+
+.combo .img-bebida .bebida {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.combo .img-bebida img {
+  width: 100px;
+  height: 100px;
+}
+
+.titulo-txt-combo {
+  display: flex;
+  flex-direction: column;
+}
+
+.nombre-bebida-combo {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.precio-bebida-combo {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+}
+
+.agregar-carrito {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: space-around;
+  border: none;
+  width: 90%;
+  padding: 20px;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 30px;
+  background: var(--primary);
 }
