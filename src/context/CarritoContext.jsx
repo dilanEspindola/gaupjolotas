@@ -5,11 +5,7 @@ const context = createContext();
 export const Carrito = () => useContext(context);
 
 export const CarritoProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState({
-    nombre: "",
-    imagen: "",
-    total: 0,
-  });
+  const [carrito, setCarrito] = useState([]);
 
   console.log(carrito);
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Carrito } from "../context/CarritoContext";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataContext";
@@ -11,12 +11,13 @@ export const ProductoId = () => {
   const { productoId } = useParams();
   const { datos } = useDataContext();
 
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState(1);
+  const [count, setCount] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [disable, setDisable] = useState(false);
   const { carrito, setCarrito } = Carrito();
 
   const navigate = useNavigate();
-  const getProduct = datos.find((product) => product._id == productoId);
+  const getProduct = datos.find((product) => product._id === productoId);
 
   if (!getProduct) return null;
   let precio = getProduct.precio
@@ -30,27 +31,40 @@ export const ProductoId = () => {
   const add = () => {
     setCount((prev) => prev + 1);
     setPrice((count + 1) * precioToNumber);
-    setCarrito({
-      ...carrito,
-      nombre: getProduct.nombre,
-      imagen: getProduct.imagen,
-      total: (count + 1) * precioToNumber,
-    });
+    setDisable(false);
   };
 
   const minus = () => {
     if (count > 1) {
       setCount((prev) => prev - 1);
       setPrice(price - precioToNumber);
-      setCarrito({ ...carrito, total: price - precioToNumber });
+
+      carrito.find((cart) =>
+        cart.id === getProduct._id
+          ? { ...cart, total: (cart.total -= precioToNumber) }
+          : null
+      );
+      setDisable(true);
     }
     if (count === 2) {
       setPrice(precioToNumber);
     }
   };
 
-  const agregarCarrito = ({ ...data }) => {
-    console.log("a");
+  const addCart = ({ ...data }) => {
+    if (count === 0) {
+      return setDisable(true);
+    }
+
+    setCarrito([
+      ...carrito,
+      {
+        id: data.id,
+        nombre: data.nombre,
+        imagen: data.imagen,
+        total: data.total,
+      },
+    ]);
   };
 
   if (!getProduct) return <Loading />;
@@ -58,11 +72,17 @@ export const ProductoId = () => {
   return (
     <SingleProductDiv>
       <IconsHome>
-        <span onClick={() => navigate("/")}>
+        <span onClick={() => navigate(-1)}>
           <i className="fa-solid fa-chevron-left back"></i>
         </span>
-        <span>
-          <i className="fa-solid fa-cart-shopping icon-cart-page-product"></i>
+        <span onClick={() => navigate("/carrito")}>
+          {carrito.length > 0 ? (
+            <span className="icon-cart-active">
+              <i className="fa-solid fa-cart-shopping icon-cart-page-product"></i>
+            </span>
+          ) : (
+            <i className="fa-solid fa-cart-shopping icon-cart-page-product"></i>
+          )}
         </span>
       </IconsHome>
 
@@ -117,8 +137,19 @@ export const ProductoId = () => {
           ) : null}
         </div>
       </div>
-      <button className="agregar-carrito" onClick={() => navigate("/carrito")}>
-        Agregar al carrito <span>$ {price === 1 ? precioToNumber : price}</span>
+      <button
+        className="agregar-carrito"
+        disabled={disable}
+        onClick={() =>
+          addCart({
+            id: getProduct._id,
+            nombre: getProduct.nombre,
+            imagen: getProduct.imagen,
+            total: count * precioToNumber,
+          })
+        }
+      >
+        Agregar al carrito <span>$ {price}</span>
       </button>
     </SingleProductDiv>
   );

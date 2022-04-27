@@ -21,7 +21,7 @@ export const Buscador = () => {
 
   return (
     <div className="vista-buscador">
-      <form action="">
+      <form action="" onSubmit={(e) => e.preventDefault()}>
         <input
           type="search"
           placeholder="sabor de ..."
